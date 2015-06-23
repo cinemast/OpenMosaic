@@ -37,6 +37,10 @@ Examples
 
 Input:
 
+![input](https://raw.githubusercontent.com/cinemast/OpenMosaic/master/doc/cat.jpg)
+
 20x20, 10x10, 5x5 tiles
 
-
+![input](https://raw.githubusercontent.com/cinemast/OpenMosaic/master/doc/cat-rgb-20.jpg)
+![input](https://raw.githubusercontent.com/cinemast/OpenMosaic/master/doc/cat-rgb-10.jpg)
+![input](https://raw.githubusercontent.com/cinemast/OpenMosaic/master/doc/cat-rgb-5.jpg)
