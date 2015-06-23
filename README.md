@@ -24,7 +24,7 @@ How to run
 
 - Clone this repo, or download the tarball.
 - Create a directory called `images`
-- Put your library for the mosaic images there
+- Put your library for the mosaic images there. An example image set can be found [here](http://lear.inrialpes.fr/~jegou/data.php)
 - Run `python Indexer.py` (only first time, or on every library update)
 - Run `python Stitcher.py inputimage.jpg 20 rgb mymosaic.jpg`
 
