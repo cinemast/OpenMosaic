@@ -15,7 +15,7 @@ Python 2.x, Python OpenCV bindings, numpy
 
 On debian based systems, you can simply type
 
-sh```
+```sh
 sudo apt-get install python python-numpy python-opencv
 ```
 
