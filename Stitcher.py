@@ -4,8 +4,11 @@ import cv2
 import math
 import sys
 import features
+import random
+from collections import deque
 
 INDEX_PATH = "./index/"
+IMAGES_TO_USE_PER_IMAGE = 5
 
 def readIndex():
     json_data = open(INDEX_PATH + "histogram.index").read()
@@ -30,13 +33,16 @@ def calcDistance(fts1, fts2, vectors):
 
 def getIndexImage(fts, index, vectors):
     minDistance = sys.maxint
-    imagefile = ""
+    bestImages = deque([])
     for item in index:
         distance = calcDistance(fts, item, vectors)
         if distance < minDistance:
             minDistance = distance
-            imagefile = item["file"]
-    return imagefile
+            bestImages.append(item["file"])
+            if len(bestImages) > IMAGES_TO_USE_PER_IMAGE:
+                bestImages.popleft();
+
+    return random.choice(bestImages)
 
 def processLine(i, w, index, inputImage, tileSize, channels):
     for j in range(0, w / tileSize):
