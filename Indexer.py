@@ -11,8 +11,23 @@ INDEX_PATH = "./index/"
 LENGTH = 50
 
 def convertImage(path):
-    image = cv2.imread(path) 
-    image = cv2.resize(image, (LENGTH,LENGTH) )
+    image = cv2.imread(path)
+    height, width, depth = image.shape
+    ratio = float(height)/float(width)
+    print (height, width, ratio)
+    if height > width:
+        image = cv2.resize(image, (LENGTH, int(LENGTH*ratio))) # width, height
+        # image is now LENGTHpx width, now we crop it to the correct height
+        h = int(LENGTH*ratio); # the final height
+        margin = int(float(h-LENGTH)/float(2)) # margin to crop at top and bottom
+        image = image[margin:(LENGTH + margin), 0:LENGTH] # crop image now
+    else:
+        image = cv2.resize(image, (int(LENGTH/ratio), LENGTH))
+        # image is now LENGTHpx height, now we crop it to the correct width
+        w = int(LENGTH/ratio); # final width
+        margin = int(float(w-LENGTH)/float(2)) # calculate margin
+        image = image[0:LENGTH, margin:(LENGTH+margin)] # crop image
+    # finally store image
     cv2.imwrite(INDEX_PATH + ntpath.basename(path), image)
     return image
 
